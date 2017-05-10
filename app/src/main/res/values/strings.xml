@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MorseCode</string>
+    <string name="top_title">Morse Code</string>
+    <string name="info">How To: \n \u2022 Type English into the input field. \n \u2022 \'Morse\' will translate the input to morse code. \n \u2022 \'Flashlight\' will project the output code through the device flashlight. \n \u2022 \'Alpha\' can translate morse code input to English.</string>
+</resources>

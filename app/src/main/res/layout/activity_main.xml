@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color2"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.sicknote.morsecode.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color1"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/my_toolbar"
+        android:id="@+id/inputLayout">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/my_toolbar"
+            android:id="@+id/intro_text"
+            android:paddingTop="16dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="36dp"
+            android:text="Input Box"
+            android:gravity="left" />
+
+        <EditText
+            android:id="@+id/txt"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/intro_text"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="36dp"
+            android:background="@drawable/back"
+            android:inputType="text"
+            android:textColor="@color/color1"
+            android:hint="Input"
+            android:gravity="center" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/inputButtonLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/inputLayout"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DOT"
+            android:id="@+id/in1"
+            android:layout_below="@id/txt"
+            android:layout_alignLeft="@+id/ctrls" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DASH"
+            android:id="@+id/in2"
+            android:layout_below="@id/txt"
+            android:layout_toRightOf="@id/in1" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SPACE"
+            android:id="@+id/in3"
+            android:layout_below="@id/txt"
+            android:layout_toRightOf="@id/in2" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BACK"
+            android:id="@+id/in4"
+            android:layout_below="@id/txt"
+            android:layout_toRightOf="@id/in3" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CLEAR"
+            android:id="@+id/in5"
+            android:layout_below="@id/txt"
+            android:layout_toRightOf="@id/in4" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/inputButtonLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/inputButtonLayout"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Copy Input To Output"
+
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="36dp"
+            android:id="@+id/in6"
+            android:layout_below="@id/in1"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ctrls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputButtonLayout2"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/my_toolbar"
+            android:id="@+id/intro_text2"
+            android:paddingTop="16dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="36dp"
+            android:text="Output Box"
+            android:gravity="left" />
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/back"
+            android:textSize="18sp"
+            android:layout_below="@id/txt"
+            android:inputType="text"
+            android:textIsSelectable="true"
+            android:layout_marginLeft="36dp"
+            android:layout_marginRight="36dp"
+            android:hint="Output"
+            android:gravity="center" />
+
+    <LinearLayout
+        android:id="@+id/outputButtonLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/inputLayout"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/toMorseBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:text="Morse" />
+
+        <Button
+            android:id="@+id/toAlphaBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:text="Alpha" />
+
+        <Button
+            android:id="@+id/flashLightOn"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:text="Flashlight"
+            android:layout_centerHorizontal="true" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/info"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/ctrls"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:gravity="center" />
+
+    </RelativeLayout>
+
+
+</ScrollView>
