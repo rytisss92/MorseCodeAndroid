@@ -65,7 +65,7 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Toggle Enlish/Morse"
+                android:text="Toggle English/Morse"
                 android:layout_marginLeft="36dp"
                 android:layout_marginRight="36dp"
                 android:id="@+id/in6" />

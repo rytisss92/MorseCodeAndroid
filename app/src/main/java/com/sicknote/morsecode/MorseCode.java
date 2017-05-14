@@ -1,5 +1,8 @@
 package com.sicknote.morsecode;
 
+import android.util.Log;
+
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -29,7 +32,6 @@ public class MorseCode {
     public static String morseToAlpha(String morseCode) {
         StringBuilder builder = new StringBuilder();
         String[] words = morseCode.trim().split("   ");
-
         for (String word : words) {
             for (String letter : word.split(" ")) {
                 String alpha = MORSE_TO_ALPHA.get(letter);

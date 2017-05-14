@@ -120,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
                 if(isMorse){
                     inputText.setText("Input Box (English)");
                     String txtToConvert = txt.getText().toString();
-                    System.out.println("txtToConvert: " + txtToConvert.length());
                     if(txtToConvert.length()>0){
                         String convertedTxt = MorseCode.morseToAlpha(txtToConvert);
                         txt.setText(convertedTxt);
@@ -131,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     inputText.setText("Input Box (Morse)");
                     String txtToConvert = txt.getText().toString();
-                    System.out.println("txtToConvert2: " + txtToConvert.length());
                     if(txtToConvert.length()>0){
                         String convertedTxt = MorseCode.alphaToMorse(txtToConvert);
                         txt.setText(convertedTxt);
