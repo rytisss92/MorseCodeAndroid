@@ -36,7 +36,7 @@
             android:paddingTop="16dp"
             android:layout_marginLeft="36dp"
             android:layout_marginRight="36dp"
-            android:text="Input Box"
+            android:text="Input Box (English)"
             android:gravity="left" />
 
         <EditText
@@ -54,13 +54,30 @@
             android:gravity="center" />
     </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/inputButtonLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/inputLayout"
+            >
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Toggle Enlish/Morse"
+                android:layout_marginLeft="36dp"
+                android:layout_marginRight="36dp"
+                android:id="@+id/in6" />
+
+        </LinearLayout>
 
     <LinearLayout
         android:id="@+id/inputButtonLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/inputLayout"
+        android:layout_below="@id/inputButtonLayout2"
         android:orientation="horizontal"
         android:gravity="center">
         <Button
@@ -110,106 +127,24 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/inputButtonLayout2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/inputButtonLayout"
-        android:orientation="horizontal"
-        android:gravity="center">
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Copy Input To Output"
 
-            android:layout_marginLeft="36dp"
-            android:layout_marginRight="36dp"
-            android:id="@+id/in6"
-            android:layout_below="@id/in1"
-            android:layout_gravity="center_horizontal" />
-
-    </LinearLayout>
 
 
     <LinearLayout
         android:id="@+id/ctrls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/inputButtonLayout2"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/my_toolbar"
-            android:id="@+id/intro_text2"
-            android:paddingTop="16dp"
-            android:layout_marginLeft="36dp"
-            android:layout_marginRight="36dp"
-            android:text="Output Box"
-            android:gravity="left" />
-
-        <TextView
-            android:id="@+id/result"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/back"
-            android:textSize="18sp"
-            android:layout_below="@id/txt"
-            android:inputType="text"
-            android:textIsSelectable="true"
-            android:layout_marginLeft="36dp"
-            android:layout_marginRight="36dp"
-            android:hint="Output"
-            android:gravity="center" />
-
-    <LinearLayout
-        android:id="@+id/outputButtonLayout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/inputLayout"
+        android:layout_below="@id/inputButtonLayout"
+        android:layout_marginTop="36dp"
         android:orientation="horizontal"
         android:gravity="center">
-
-        <Button
-            android:id="@+id/toMorseBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="42dp"
-            android:text="Morse" />
-
-        <Button
-            android:id="@+id/toAlphaBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="42dp"
-            android:text="Alpha" />
-
         <Button
             android:id="@+id/flashLightOn"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="42dp"
             android:text="Flashlight"
             android:layout_centerHorizontal="true" />
         </LinearLayout>
-
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/info"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/ctrls"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="52dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginRight="36dp"
-        android:gravity="center" />
 
     </RelativeLayout>
 

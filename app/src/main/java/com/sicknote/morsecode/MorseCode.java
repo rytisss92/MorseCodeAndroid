@@ -36,7 +36,7 @@ public class MorseCode {
                 builder.append(alpha);
             }
 
-            builder.append("  ");
+            builder.append(" ");
         }
 
         return builder.toString().replaceAll("\\s+$", "").toUpperCase();

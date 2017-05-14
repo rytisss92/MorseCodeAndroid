@@ -16,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,9 +27,7 @@ import java.security.Policy;
 public class MainActivity extends AppCompatActivity {
 
     private TextView txt;
-    private TextView result;
-    private Button toMorseBtn;
-    private Button toAlphaBtn;
+    private TextView inputText;
     private Button flashLightOn;
 
     private Button btnDash;
@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean isFlashOn;
     private boolean morseFlashRunning;
 
+    private boolean isMorse;
+
     private static Camera camera;
     private Camera.Parameters parameters;
 
@@ -49,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Thread flashLightThread;
     private Thread getPermissionThread;
+
+    private LinearLayout inputLayout;
 
 
     @Override
@@ -59,12 +63,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
+
         txt = (TextView) findViewById(R.id.txt);
-        result = (TextView) findViewById(R.id.result);
-        toMorseBtn = (Button) findViewById(R.id.toMorseBtn);
-        toAlphaBtn = (Button) findViewById(R.id.toAlphaBtn);
+        inputText = (TextView) findViewById(R.id.intro_text);
         flashLightOn = (Button) findViewById(R.id.flashLightOn);
         btnCopy = (Button) findViewById(R.id.in6);
+
+        inputLayout = (LinearLayout) findViewById(R.id.inputButtonLayout);
+        inputLayout.setVisibility(inputLayout.GONE);
 
         btnDot = (Button) findViewById(R.id.in1);
         btnDash = (Button) findViewById(R.id.in2);
@@ -108,29 +114,31 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        toMorseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String txtToConvert = txt.getText().toString();
-                String convertedTxt = MorseCode.alphaToMorse(txtToConvert);
-                result.setText(convertedTxt);
-            }
-        });
-
-        toAlphaBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String txtToConvert = txt.getText().toString();
-                String convertedTxt = MorseCode.morseToAlpha(txtToConvert);
-                result.setText(convertedTxt);
-            }
-        });
-
         btnCopy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String txtToConvert = txt.getText().toString();
-                result.setText(txtToConvert);
+                if(isMorse){
+                    inputText.setText("Input Box (English)");
+                    String txtToConvert = txt.getText().toString();
+                    System.out.println("txtToConvert: " + txtToConvert.length());
+                    if(txtToConvert.length()>0){
+                        String convertedTxt = MorseCode.morseToAlpha(txtToConvert);
+                        txt.setText(convertedTxt);
+                    }
+                    inputLayout.setVisibility(view.GONE);
+                    isMorse = false;
+                }
+                else{
+                    inputText.setText("Input Box (Morse)");
+                    String txtToConvert = txt.getText().toString();
+                    System.out.println("txtToConvert2: " + txtToConvert.length());
+                    if(txtToConvert.length()>0){
+                        String convertedTxt = MorseCode.alphaToMorse(txtToConvert);
+                        txt.setText(convertedTxt);
+                    }
+                    inputLayout.setVisibility(view.VISIBLE);
+                    isMorse = true;
+                }
             }
         });
 
@@ -138,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
         isFlashOn = false;
         canUseFlash = false;
         morseFlashRunning = false;
+        isMorse = false;
 
         flashLightOn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -180,9 +189,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void OutputToFlashLight(){
         morseFlashRunning = true;
-        final String morseString = result.getText().toString();
-        //System.out.println("String: " + morseString);
-        //System.out.println("Loop Thread.");
+        String string = "";
+
+        if(isMorse){
+            string = txt.getText().toString();
+        }
+        else {
+            string = MorseCode.alphaToMorse(txt.getText().toString());
+        }
+
+        final String morseString = string;
+
         flashLightThread = new Thread() {
             public void run(){
                 for(int i=0; i < morseString.length(); i++){
@@ -192,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
                             //On
                             turnOnTheFlash();
                             try {
-                                Thread.sleep(600);
+                                Thread.sleep(300);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                                 this.interrupt();
@@ -201,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
                             //Off
                             turnOffTheFlash();
                             try {
-                                Thread.sleep(100);
+                                Thread.sleep(50);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                                 this.interrupt();
@@ -213,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
                             turnOnTheFlash();
 
                             try {
-                                Thread.sleep(200);
+                                Thread.sleep(150);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                                 this.interrupt();
@@ -222,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
                             //Off
                             turnOffTheFlash();
                             try {
-                                Thread.sleep(100);
+                                Thread.sleep(50);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                                 this.interrupt();
@@ -233,7 +250,7 @@ public class MainActivity extends AppCompatActivity {
                             //Off
                             turnOffTheFlash();
                             try {
-                                Thread.sleep(350);
+                                Thread.sleep(150);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                                 this.interrupt();
@@ -249,6 +266,7 @@ public class MainActivity extends AppCompatActivity {
         };
         flashLightThread.start();
     }
+
 
     @Override
     public boolean onPrepareOptionsMenu(final Menu menu) {
